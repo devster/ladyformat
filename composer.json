@@ -1,0 +1,34 @@
+{
+    "name": "devster/ladyformat",
+    "description": "Texts formatters",
+    "keywords": ["markdown", "reStructuredText", "Textile", "convertion", "format"],
+    "homepage": "https://github.com/devster/ladyformat",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeremy Perret",
+            "email": "jeremy@devster.org",
+            "homepage": "https://github.com/devster"
+        },
+        {
+            "name": "Thierry Geindre"
+        }
+    ],
+
+    "autoload": {
+        "psr-0": { "LadyFormat": "src/" }
+    },
+
+    "require": {
+        "php": ">=5.3.3",
+        "michelf/php-markdown": "1.4.*",
+        "knplabs/knp-snappy": "~0.1",
+        "symfony/process": "~2.4"
+    },
+
+    "require-dev": {
+        "atoum/atoum": "dev-master",
+        "smalot/pdfparser": "dev-master"
+    }
+}
