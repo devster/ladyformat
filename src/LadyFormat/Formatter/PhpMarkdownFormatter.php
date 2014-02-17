@@ -5,7 +5,7 @@ namespace LadyFormat\Formatter;
 use \Michelf\Markdown;
 
 /**
- * PHP Markdown formatter
+ * PhpMarkdown formatter
  *
  * This formatter use the PHP Markdown Lib of Michel Fortin
  *

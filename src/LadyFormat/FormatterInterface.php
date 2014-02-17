@@ -1,7 +1,10 @@
 <?php
 
-namespace LadyFormat\Formatter;
+namespace LadyFormat;
 
+/**
+ * Formatter interface
+ */
 interface FormatterInterface
 {
     /**

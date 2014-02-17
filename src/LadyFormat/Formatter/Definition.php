@@ -2,6 +2,8 @@
 
 namespace LadyFormat\Formatter;
 
+use LadyFormat\DefinitionInterface;
+
 /**
  * Base definition
  */

@@ -2,6 +2,9 @@
 
 namespace LadyFormat\Formatter;
 
+/**
+ * PhpMarkdown definition
+ */
 class PhpMarkdown extends Definition
 {
     /**

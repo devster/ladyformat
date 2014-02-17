@@ -2,6 +2,9 @@
 
 namespace LadyFormat\Formatter;
 
+/**
+ * SnappyPdf Definition
+ */
 class SnappyPdf extends Definition
 {
     /**
@@ -19,7 +22,7 @@ class SnappyPdf extends Definition
      *
      * @param string $binary
      *
-     * @return SnappyPdf The current instance
+     * @return LadyFormat\Formatter\SnappyPdf The current instance
      */
     public function setBinary($binary)
     {
@@ -33,7 +36,7 @@ class SnappyPdf extends Definition
      *
      * @param array $options
      *
-     * @return SnappyPdf The current instance
+     * @return LadyFormat\Formatter\SnappyPdf The current instance
      */
     public function setOptions(array $options)
     {

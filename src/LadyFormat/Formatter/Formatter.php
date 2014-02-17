@@ -2,6 +2,7 @@
 
 namespace LadyFormat\Formatter;
 
+use LadyFormat\FormatterInterface;
 use LadyFormat\Exception\IOException;
 
 /**
@@ -16,7 +17,7 @@ abstract class Formatter implements FormatterInterface
      * @param string $content Optional content for the temporary file
      * @param string $extension An optional extension for the filename
      *
-     * @throws IOException If fails to create the file
+     * @throws LadyFormat\Exception\IOException If fails to create the file
      *
      * @return string The filename
      */
@@ -38,9 +39,9 @@ abstract class Formatter implements FormatterInterface
     /**
      * Read the content of a file
      *
-     * @param  string $file
+     * @param string $file
      *
-     * @throws \IOException If the file doesn't exist
+     * @throws LadyFormat\Exception\IOException If the file doesn't exist
      *
      * @return string
      */
@@ -67,11 +68,9 @@ abstract class Formatter implements FormatterInterface
      * @param string  $content
      * @param boolean $override
      *
-     * @throws \IOException If the file already exist and override is false
-     * @throws \IOException If unable to create the path
-     * @throws \IOException If unable to write the file
-     *
-     * @return void
+     * @throws LadyFormat\Exception\IOException If the file already exist and override is false
+     * @throws LadyFormat\Exception\IOException If unable to create the path
+     * @throws LadyFormat\Exception\IOException If unable to write the file
      */
     public function writeFile($file, $content, $override = true)
     {
@@ -96,9 +95,7 @@ abstract class Formatter implements FormatterInterface
      * @param string  $dir
      * @param integer $mode
      *
-     * @throws IOException If fails to create the directory
-     *
-     * @return void
+     * @throws LadyFormat\Exception\IOException If fails to create the directory
      */
     public function mkdir($dir, $mode = 0777)
     {

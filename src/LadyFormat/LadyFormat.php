@@ -2,8 +2,6 @@
 
 namespace LadyFormat;
 
-use LadyFormat\Formatter;
-use LadyFormat\Formatter\DefinitionInterface;
 use LadyFormat\Exception\FormatterNotFound;
 
 /**
@@ -38,9 +36,9 @@ class LadyFormat
     /**
      * Add a formatter definition to LadyFormat
      *
-     * @param DefinitionInterface $definition
+     * @param LadyFormat\DefinitionInterface $definition
      *
-     * @return LadyFormat
+     * @return LadyFormat The current instance
      */
     public function addDefinition(DefinitionInterface $definition)
     {
@@ -76,7 +74,7 @@ class LadyFormat
      *
      * @param string $name
      *
-     * @return DefinitionInterface
+     * @return LadyFormat\DefinitionInterface
      */
     public function getDefinition($name)
     {
@@ -88,9 +86,11 @@ class LadyFormat
     }
 
     /**
-     * Guess the format from a file
+     * Guess the format from a filename
      *
      * @param string $file
+     *
+     * @throws LadyFormat\Exception\FormatterNotFound If $throwException is true and no format was guessed
      *
      * @return string|null
      */
@@ -111,8 +111,10 @@ class LadyFormat
      * Format a input file into an output file
      * Formatting will guess the formats based on the files
      *
-     * @param  string $input
-     * @param  string $output
+     * @param string $input
+     * @param string $output
+     *
+     * @throws LadyFormat\Exception\FormatterNotFound If no formatter is found
      */
     public function format($input, $output)
     {
@@ -128,9 +130,9 @@ class LadyFormat
      * @param string $input
      * @param string $output
      *
-     * @throws \InvalidArgumentException If no formatter is found
+     * @throws LadyFormat\Exception\FormatterNotFound If no formatter is found
      *
-     * @return LadyFormat\Formatter\FormatterInterface
+     * @return LadyFormat\FormatterInterface
      */
     public function get($input, $output)
     {
@@ -151,13 +153,13 @@ class LadyFormat
      * @param string $input
      * @param string $output
      *
-     * @return Lady\Formatter\FormatterInterface|null
+     * @return LadyFormat\FormatterInterface|null
      */
     public function find($input, $output)
     {
         $result = $this->findPaths($this->definitions, $input, $output);
 
-        if ($result instanceof Formatter\DefinitionInterface) {
+        if ($result instanceof DefinitionInterface) {
             return $this->getFormatterFromDefinition($result);
         }
 
@@ -169,10 +171,11 @@ class LadyFormat
     /**
      * Find the shorter way to format input to output format
      *
-     * @param  array  $graph
-     * @param  string $input
-     * @param  string $output
-     * @return array|LadyFormat\Formatter\DefinitionInterface|null
+     * @param array  $graph
+     * @param string $input
+     * @param string $output
+     *
+     * @return array|LadyFormat\DefinitionInterface|null
      */
     protected function findPaths(array $graph, $input, $output)
     {
@@ -216,7 +219,7 @@ class LadyFormat
      *
      * @param string $name
      *
-     * @return LadyFormat\Formatter\FormatterInterface
+     * @return LadyFormat\FormatterInterface
      */
     public function getFormatter($name)
     {
@@ -230,9 +233,9 @@ class LadyFormat
     /**
      * Get a formatter from its definition object
      *
-     * @param DefinitionInterface $definition
+     * @param LadyFormat\DefinitionInterface $definition
      *
-     * @return Lady\Formatter\FormatterInterface
+     * @return LadyFormat\FormatterInterface
      */
     public function getFormatterFromDefinition(DefinitionInterface $definition)
     {

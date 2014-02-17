@@ -1,6 +1,6 @@
 <?php
 
-namespace LadyFormat\Formatter;
+namespace LadyFormat;
 
 /**
  * Formatter definition interface

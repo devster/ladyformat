@@ -5,7 +5,7 @@ namespace LadyFormat\Formatter;
 use Knp\Snappy\Pdf;
 
 /**
- * Snappy formatter
+ * SnappyPdf formatter
  *
  * This formatter use the Snappy lib by KnpLabs
  * which use itself the tool wkhtmltopdf

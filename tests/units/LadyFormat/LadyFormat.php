@@ -3,15 +3,19 @@
 namespace LadyFormat\Tests\Units;
 
 use mageekguy\atoum\test;
-use LadyFormat\LadyFormat as LF;
 
 class LadyFormat extends test
 {
-    public function testdefinitionCrud()
+    protected function createInstance()
     {
-        $lf = new LF;
+        return new \LadyFormat\LadyFormat;
+    }
 
-        $def = new \mock\LadyFormat\Formatter\DefinitionInterface;
+    public function testDefinitionCrud()
+    {
+        $lf = $this->createInstance();
+
+        $def = new \mock\LadyFormat\DefinitionInterface;
         $def->getMockController()->getName = 'test';
 
         $mdDef = new \mock\LadyFormat\Formatter\PhpMarkdown;
@@ -27,7 +31,7 @@ class LadyFormat extends test
             ->boolean($lf->hasDefinition('unknown'))
                 ->isFalse()
             ->object($lf->getDefinition('test'))
-                ->isInstanceOf('LadyFormat\Formatter\DefinitionInterface')
+                ->isInstanceOf('LadyFormat\DefinitionInterface')
             ->exception(function () use ($lf) {
                 $lf->getDefinition('unknown');
             })
@@ -44,7 +48,7 @@ class LadyFormat extends test
      */
     public function testGuessFormat($file, $format)
     {
-        $lf = new LF;
+        $lf = $this->createInstance();
 
         $this
             ->variable($lf->guessFormat($file))
@@ -84,7 +88,7 @@ class LadyFormat extends test
         $inputTempFile = $f->createTemporaryFile("#title", 'md');
         $outputTempFile = $f->createTemporaryFile(null, 'html');
 
-        $lf = new LF;
+        $lf = $this->createInstance();
         $lf->format($inputTempFile, $outputTempFile);
 
         $this
@@ -106,7 +110,7 @@ class LadyFormat extends test
 
     public function testGet()
     {
-        $lf = new LF;
+        $lf = $this->createInstance();
 
         $this
             ->exception(function () use ($lf) {
@@ -123,7 +127,7 @@ class LadyFormat extends test
 
     public function testFind()
     {
-        $lf = new LF;
+        $lf = $this->createInstance();
 
         $this
             ->variable($lf->find('unknown', 'pdf'))
@@ -154,7 +158,7 @@ class LadyFormat extends test
 
     public function testGetFormatterFromDefinition()
     {
-        $lf = new LF;
+        $lf = $this->createInstance();
 
         $mdDef = new \LadyFormat\Formatter\PhpMarkdown;
 
@@ -169,7 +173,7 @@ class LadyFormat extends test
      */
     public function testGetFormatter($name, $classname)
     {
-        $lf = new LF;
+        $lf = $this->createInstance();
 
         if (!$classname) {
             $this

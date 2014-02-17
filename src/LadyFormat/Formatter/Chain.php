@@ -26,7 +26,7 @@ class Chain extends Definition
     /**
      * Get the starting definition
      *
-     * @return DefinitionInterface
+     * @return LadyFormat\DefinitionInterface
      */
     protected function getStart()
     {
@@ -36,7 +36,7 @@ class Chain extends Definition
     /**
      * Get the ending definition
      *
-     * @return DefinitionInterface
+     * @return LadyFormat\DefinitionInterface
      */
     protected function getEnd()
     {
