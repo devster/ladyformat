@@ -3,6 +3,8 @@ php:
   - 5.3
   - 5.4
   - 5.5
+  - 5.6
+  - hhvm
 before_script:
   - wget -O pdf.tar.bz2 http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
   - tar -xf pdf.tar.bz2
